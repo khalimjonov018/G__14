@@ -41,6 +41,7 @@ function renderPosts(id) {
 					<p>id: ${post.id}</p>
 					<p>title: ${post.title}</p>
 					<p>body: ${post.body}</p>
+					<button onclick="rendercomments()" type="button" class="btn btn-second"  data-bs-toggle="modal" data-bs-target="#exampleModal">More</button>
 					</div>
 				`;
 
