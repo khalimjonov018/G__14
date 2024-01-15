@@ -1,7 +1,8 @@
 const firstBtn = document.querySelector(".first__btn");
 const secondBtn = document.querySelector(".second__btn");
 const content = document.querySelector(".content");
-const postModalBody = document.querySelector('#post_modal-body');
+const postModalBody = document.querySelector("#post_modal-body");
+const modalComment = document.querySelector("#modalComment");
 
 firstBtn.addEventListener("click", () => {
 	const userProise = fetch("https://jsonplaceholder.typicode.com/users")
@@ -18,8 +19,10 @@ firstBtn.addEventListener("click", () => {
 						<p>name: ${user.name}</p>
 						<p>username: ${user.username}</p>
 						<p>email: ${user.email}</p>
-						<button onclick="renderPosts(${user.id})" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">More</button>
-					</div>
+
+						<button onclick="renderPosts(${user.id})" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal">post</button>
+
+
 					`;
 				content.innerHTML += template;
 			});
@@ -41,8 +44,12 @@ function renderPosts(id) {
 					<p>id: ${post.id}</p>
 					<p>title: ${post.title}</p>
 					<p>body: ${post.body}</p>
-					<button onclick="rendercomments()" type="button" class="btn btn-second"  data-bs-toggle="modal" data-bs-target="#exampleModal">More</button>
+
+					<button type="button" onclick="renderComment(${post.id})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+					Comment
+     </button>
 					</div>
+
 				`;
 
 				if (post.userId === id) {
@@ -52,3 +59,26 @@ function renderPosts(id) {
 		});
 }
 
+function renderComment(id) {
+	const userProise = fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+		.then((com) => {
+			return com.json();
+		})
+		.then((comment) => {
+			console.log(comment);
+			modalComment.innerHTML = "";
+			// console.log(modalComment);
+			comment.forEach((comment) => {
+				const templatele = `
+					<div>
+					<p>userId: ${comment.postId}</p>
+					<p>id: ${comment.id}</p>
+					<p>title: ${comment.name}</p>
+					<p>body: ${comment.email}</p>
+					</div>
+				`;
+
+				modalComment.innerHTML += templatele;
+			});
+		});
+}
