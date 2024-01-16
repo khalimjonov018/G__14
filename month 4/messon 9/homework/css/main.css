@@ -1,0 +1,13 @@
+#Result{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+
+}
+.innerchild{
+ margin-top: 80px;
+ padding: 30px;
+ gap: 10px;
+}
