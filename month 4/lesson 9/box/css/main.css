@@ -1,0 +1,12 @@
+.container >h1{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 50px;
+}
+
+#nationResult{
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
