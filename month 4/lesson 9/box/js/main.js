@@ -12,7 +12,7 @@ function findNation() {
 				console.log(data);
 				NationResult.innerHTML = "";
 				const temple = `<div class="card" style="width: 18rem;">
-     <img src="https://flagsapi.com/${data.country[0].country_id}/flat/64.png" class="card-img-top" alt="...">
+     <img src="https://finputPasswordlagsapi.com/${data.country[0].country_id}/flat/64.png" class="card-img-top" alt="...">
      <div class="card-body">
        <h2 class="card-title">Name: ${data.name}</h2>
        <h4 class="card-text">Country: ${data.country[0].country_id}</h4>
